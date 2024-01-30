@@ -8,7 +8,11 @@
                 @csrf
                 <div class="mb-3">
                     <label for="nama" class="form-label">Nama</label>
-                    <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama">
+                    <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama"
+                        name="nama" placeholder="Masukkan Nama">
+                    @error('nama')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <label for="nis" class="form-label">NIS</label>

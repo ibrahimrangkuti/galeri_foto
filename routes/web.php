@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,11 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('layouts.app');
-});
+})->name('home');
 
-Route::get('/login', function () {
-    return view('pages.login');
-})->name('login');
+Route::get('/login', [LoginController::class, 'index'])->name('login.index');
+Route::post('/login', [LoginController::class, 'processLogin'])->name('login.process');
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
 Route::post('/register', [RegisterController::class, 'processRegister'])->name('register.process');
