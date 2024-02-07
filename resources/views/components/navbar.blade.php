@@ -12,7 +12,20 @@
                 <a class="nav-link" href="#">Pricing</a>
                 <a class="nav-link disabled" aria-disabled="true">Disabled</a>
             </div>
-            <a href="{{ route('login.index') }}" class="btn btn-info text-white">Login</a>
+            @if (!Auth::check())
+                <a href="{{ route('login.index') }}" class="btn btn-info text-white">Login</a>
+            @else
+                <div class="dropdown">
+                    <button class="btn text-white dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        {{ Auth::user()->nama }}
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ route('logout') }}">Keluar</a></li>
+                    </ul>
+                </div>
+            @endif
         </div>
+
     </div>
 </nav>
