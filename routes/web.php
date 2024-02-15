@@ -32,3 +32,7 @@ Route::get('/logout', function () {
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
 Route::post('/register', [RegisterController::class, 'processRegister'])->name('register.process');
+
+Route::get('/profile', function () {
+    return view('pages.user.profile');
+});
